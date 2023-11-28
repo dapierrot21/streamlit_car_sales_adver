@@ -78,9 +78,6 @@ if show_car_price_plot:
 
 st.header("Price vs. Odometer Relationship")
 
-# Display checkbox to toggle the plot
-show_odometer_by_type_plot = st.checkbox("Show Scatter Plot of Odometer by Car Type")
-
 alt.data_transformers.enable("default", max_rows=None)
 
 # Type vs. Days Listed Relationship
