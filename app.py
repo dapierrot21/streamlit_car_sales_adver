@@ -2,10 +2,34 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import altair as alt
+import datetime
 
 
 # Reading in csv file.
 car_sales_df = pd.read_csv("vehicles_us.csv").dropna()
+
+# EDA
+car_sales_df["model_year"] = car_sales_df["model_year"].astype(
+    "Int64"
+)  # Convert to nullable integer
+car_sales_df["cylinders"] = car_sales_df["cylinders"].astype(
+    "Int64"
+)  # Convert to nullable integer
+car_sales_df["odometer"] = car_sales_df["odometer"].astype(
+    "Int64"
+)  # Convert to nullable integer
+car_sales_df["date_posted"] = pd.to_datetime(car_sales_df["date_posted"])
+
+new_car_sales_df = car_sales_df.dropna(
+    subset=["model_year", "cylinders", "odometer", "paint_color", "is_4wd"]
+).copy()
+
+# Feature Engineering: Age of car
+current_year = datetime.datetime.now().year
+new_car_sales_df["car_age"] = current_year - new_car_sales_df["model_year"]
+
+# Display the first few rows to confirm the changes
+new_car_sales_df[["model_year", "car_age"]].head(10)
 
 st.header("Distribution of Car Age")
 
@@ -16,7 +40,7 @@ show_car_age_plot = st.checkbox("Show Distribution of Car Age")
 if show_car_age_plot:
     st.plotly_chart(
         px.histogram(
-            car_sales_df,
+            new_car_sales_df,
             x="car_age",
             nbins=20,
             title="Distribution of Car Age",
@@ -39,7 +63,7 @@ show_car_price_plot = st.checkbox("Show Distribution of Car Prices")
 if show_car_price_plot:
     st.plotly_chart(
         px.histogram(
-            car_sales_df,
+            new_car_sales_df,
             x="price",
             title="Distribution of Car Prices",
             nbins=50,
@@ -61,7 +85,7 @@ show_odometer_by_type_plot = st.checkbox("Show Scatter Plot of Odometer by Car T
 if show_odometer_by_type_plot:
     st.plotly_chart(
         px.scatter(
-            car_sales_df,
+            new_car_sales_df,
             x="odometer",
             y="type",
             title="Scatter Plot of Odometer Values by Car Type",
@@ -75,7 +99,7 @@ if show_odometer_by_type_plot:
 st.header("Scatter Plot of Odometer Values by Car Type")
 
 # Relationship with car type vs odometer values
-scatter_data = car_sales_df[
+scatter_data = new_car_sales_df[
     ["type", "odometer"]
 ].dropna()  # Remove rows with missing values
 
@@ -98,7 +122,7 @@ alt.data_transformers.enable("default", max_rows=None)
 
 # Type vs. Days Listed Relationship
 scatterplot = (
-    alt.Chart(car_sales_df)
+    alt.Chart(new_car_sales_df)
     .mark_circle()
     .encode(
         x="type",
