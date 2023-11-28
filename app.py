@@ -81,19 +81,22 @@ st.header("Price vs. Odometer Relationship")
 # Display checkbox to toggle the plot
 show_odometer_by_type_plot = st.checkbox("Show Scatter Plot of Odometer by Car Type")
 
-# Plot scatter plot of odometer by car type using Streamlit
-if show_odometer_by_type_plot:
-    st.plotly_chart(
-        px.scatter(
-            new_car_sales_df,
-            x="odometer",
-            y="type",
-            title="Scatter Plot of Odometer Values by Car Type",
-            height=600,
-            opacity=0.5,
-        ).update_layout(xaxis_title="Odometer", yaxis_title="Car Type"),
-        use_container_width=True,
+alt.data_transformers.enable("default", max_rows=None)
+
+# Type vs. Days Listed Relationship
+scatterplot = (
+    alt.Chart(new_car_sales_df)
+    .mark_circle()
+    .encode(
+        x="type",
+        y="days_listed",
+        tooltip=["model", "days_listed", "model_year", "condition", "price"],
     )
+    .properties(title="Type vs. Days Listed Relationship", width=800, height=400)
+)
+
+# Display the Altair chart in Streamlit
+st.altair_chart(scatterplot.interactive(), use_container_width=True)
 
 
 st.header("Scatter Plot of Odometer Values by Car Type")
