@@ -80,16 +80,14 @@ st.header("Price vs. Odometer Relationship")
 
 alt.data_transformers.enable("default", max_rows=None)
 
-# Type vs. Days Listed Relationship
+# Price vs. Odometer Relationship
 scatterplot = (
     alt.Chart(new_car_sales_df)
     .mark_circle()
     .encode(
-        x="type",
-        y="days_listed",
-        tooltip=["model", "days_listed", "model_year", "condition", "price"],
+        x="odometer", y="price", tooltip=["odometer", "price", "model", "condition"]
     )
-    .properties(title="Type vs. Days Listed Relationship", width=800, height=400)
+    .properties(title="Price vs. Odometer Relationship", width=600, height=400)
 )
 
 # Display the Altair chart in Streamlit
