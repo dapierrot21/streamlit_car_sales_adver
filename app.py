@@ -78,20 +78,51 @@ if show_car_price_plot:
 
 st.header("Price vs. Odometer Relationship")
 
+
+# Enable Altair data transformer
 alt.data_transformers.enable("default", max_rows=None)
+
+# Checkbox to select car types
+selected_car_types = st.multiselect(
+    "Select Car Types",
+    new_car_sales_df["type"].unique(),
+    default=new_car_sales_df["type"].unique(),
+)
 
 # Price vs. Odometer Relationship
 scatterplot = (
     alt.Chart(new_car_sales_df)
     .mark_circle()
     .encode(
-        x="odometer", y="price", tooltip=["odometer", "price", "model", "condition"]
+        x="odometer:Q",
+        y="price:Q",
+        tooltip=["odometer:Q", "price:Q", "model:N", "condition:N"],
     )
     .properties(title="Price vs. Odometer Relationship", width=600, height=400)
 )
 
-# Display the Altair chart in Streamlit
-st.altair_chart(scatterplot.interactive(), use_container_width=True)
+# Filter data based on selected car types
+filtered_data = new_car_sales_df[new_car_sales_df["type"].isin(selected_car_types)]
+
+# Scatter plot with filtered data
+filtered_scatterplot = (
+    alt.Chart(filtered_data)
+    .mark_circle()
+    .encode(
+        x="odometer:Q",
+        y="price:Q",
+        tooltip=["odometer:Q", "price:Q", "model:N", "condition:N"],
+    )
+    .properties(
+        title="Price vs. Odometer Relationship (Filtered)", width=600, height=400
+    )
+)
+
+# Combine the original and filtered scatter plots
+combined_scatterplot = scatterplot + filtered_scatterplot
+
+# Display the combined scatter plot
+st.altair_chart(combined_scatterplot, use_container_width=True)
 
 
 st.header("Scatter Plot of Odometer Values by Car Type")
