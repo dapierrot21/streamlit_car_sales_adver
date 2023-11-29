@@ -44,14 +44,17 @@ The project utilizes the Streamlit framework in Python to create an interactive 
 
    Windows:
 
-   ````bash
+   ```bash
    venv\Scripts\activate
 
+   ```
+
    On manOS/Linux:
+
    ```bash
    source venv/bin/activate
 
-   ````
+   ```
 
 4. Install Dependencies:
 
@@ -65,12 +68,12 @@ The project utilizes the Streamlit framework in Python to create an interactive 
    streamlit run app.py
    ```
 
-Open your web browser and go to http://localhost:8501 to view the Streamlit app.
+Open your web browser and go to https://car-sale-web-app.onrender.com to view the Streamlit app.
 
 ## Project Structure
 
-app.py: Main Streamlit application file.
-requirements.txt: List of Python dependencies for the project.
-notebooks/: juypter notebook
-vehicles_us.csv: dataset
-.streamlit/: Streamlit config file
+- app.py: Main Streamlit application file.
+- requirements.txt: List of Python dependencies for the project.
+- notebooks/: juypter notebook
+- vehicles_us.csv: dataset
+- .streamlit/: Streamlit config file
