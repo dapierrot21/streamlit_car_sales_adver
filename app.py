@@ -98,7 +98,7 @@ scatterplot = (
     .encode(
         x="odometer:Q",
         y="price:Q",
-        tooltip=["odometer:Q", "price:Q", "model:N", "condition:N"],
+        tooltip=["odometer:Q", "price:Q", "model:N", "condition:N", "type:N"],
     )
     .properties(title="Price vs. Odometer Relationship", width=600, height=400)
 )
