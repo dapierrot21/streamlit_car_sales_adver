@@ -29,3 +29,48 @@ The project utilizes the Streamlit framework in Python to create an interactive 
 
    ```bash
    git clone https://github.com/dapierrot21/streamlit_car_sales_adver.git
+   cd streamlit_car_sales_adver
+
+   ```
+
+2. Create a Virtual Environment
+
+   ```bash
+   python -m venv venv
+
+   ```
+
+3. Activate the Virtual Environment
+
+   Windows:
+
+   ````bash
+   venv\Scripts\activate
+
+   On manOS/Linux:
+   ```bash
+   source venv/bin/activate
+
+   ````
+
+4. Install Dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+
+   ```
+
+5. Run the Streamlit App
+   ```bash
+   streamlit run app.py
+   ```
+
+Open your web browser and go to http://localhost:8501 to view the Streamlit app.
+
+## Project Structure
+
+app.py: Main Streamlit application file.
+requirements.txt: List of Python dependencies for the project.
+notebooks/: juypter notebook
+vehicles_us.csv: dataset
+.streamlit/: Streamlit config file
