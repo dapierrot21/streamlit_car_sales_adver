@@ -413,7 +413,9 @@ car_types = most_posted_by_month["type"].unique().tolist()
 selected_car_type = st.selectbox("Select a Car Type", car_types)
 
 # Filter the DataFrame based on the selected car type
-filtered_data = most_posted_by_month[most_posted_by_month["type"] == selected_car_type]
+filtered_data = most_posted_by_month[
+    most_posted_by_month["type"].isin([selected_car_type])
+]
 
 # Plot the distribution
 fig = px.bar(
@@ -431,7 +433,7 @@ st.plotly_chart(fig)
 
 # Add the observation to the Streamlit app
 observation = """
-**Observations**<br>
+**Observations**
 - **SUV Dominance:** SUVs appear to be the most posted car type in several months, including April, December, March, May, and November.
 
 - **Truck Dominance:** Trucks dominate in months like August, February, July, and June.
