@@ -406,17 +406,6 @@ most_posted_by_month = monthly_posting_counts.loc[
     monthly_posting_counts.groupby("month_posted")["count"].idxmax()
 ]
 
-# Create a list of unique car types for the selectbox
-car_types = most_posted_by_month["type"].unique().tolist()
-
-# Allow the user to select a car type
-selected_car_type = st.selectbox("Select a Car Type", car_types)
-
-# Filter the DataFrame based on the selected car type
-filtered_data = most_posted_by_month[
-    most_posted_by_month["type"].isin([selected_car_type])
-]
-
 # Plot the distribution
 fig = px.bar(
     filtered_data,
@@ -424,7 +413,7 @@ fig = px.bar(
     y="count",
     color="type",
     labels={"count": "Number of Postings"},
-    title=f"Monthly Postings for {selected_car_type}",
+    title="Monthly Postings for Car Types",
 )
 
 # Show the plot using st.plotly_chart
