@@ -223,10 +223,14 @@ st.write(observation)
 
 # Top 20 shortest listed vs. top 20 longest listed
 st.header("Top 20 Shortest Listed vs. Top 20 Longest Listed")
+car_sales_df["price_length"] = car_sales_df["price"].astype(str).str.len()
 
+# Filter rows where the length of 'price' is greater than 1
+valid_data = car_sales_df[car_sales_df["price_length"] > 1]
 
 # Assuming 'days_listed' is the column representing the number of days a car was listed
-top_20_shortest_listed = car_sales_df.nsmallest(20, "days_listed")
+top_20_shortest_listed = valid_data.nsmallest(20, "days_listed")
+
 
 # Display the resulting DataFrame
 st.write("Top 20 Shortest Listed Cars:")
@@ -245,7 +249,7 @@ st.write(
 )
 
 # Assuming 'days_listed' is the column representing the number of days a car was listed
-top_20_longest_listed = car_sales_df.nlargest(20, "days_listed")
+top_20_longest_listed = valid_data.nlargest(20, "days_listed")
 
 # Display the resulting DataFrame
 st.write("Top 20 Longest Listed Cars:")
@@ -280,8 +284,8 @@ st.write(correlation_matrix)
 
 # Add the observation to the Streamlit app
 observation = """
-**Top 20 Shortest Listed vs. Top 20 Longest Listed Conclusion**
-- The correlation coefficient between price and days listed is approximately -0.097. This indicates a weak negative correlation between the price of a car and the number of days it is listed. In other words, cars with lower prices tend to have slightly longer listing , and cars with higher prices tend to have slightly shorter listing. However, the correlation is weak, suggesting that other factors contribute more significantly to the listing duration.
+**Top 20 Shortest Listed vs. Top 20 Longest Listed Conclusion**<br>
+- The correlation coefficient is approximately -0.024, indicating a very weak negative correlation between the price of a car and the number of days it is listed. In other words, there's a minimal tendency for lower-priced cars to have slightly longer listing durations and higher-priced cars to have slightly shorter listing durations.
 """
 
 st.write(observation)
