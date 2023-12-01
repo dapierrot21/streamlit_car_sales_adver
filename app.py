@@ -408,12 +408,12 @@ most_posted_by_month = monthly_posting_counts.loc[
 
 # Plot the distribution
 fig = px.bar(
-    filtered_data,
+    most_posted_by_month,
     x="month_posted",
     y="count",
     color="type",
     labels={"count": "Number of Postings"},
-    title="Monthly Postings for Car Types",
+    title="Most Posted Car Type in Each Month",
 )
 
 # Show the plot using st.plotly_chart
