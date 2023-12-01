@@ -285,7 +285,7 @@ st.write(correlation_matrix)
 # Add the observation to the Streamlit app
 observation = """
 **Top 20 Shortest Listed vs. Top 20 Longest Listed Conclusion**<br>
-- The correlation coefficient is approximately -0.024, indicating a very weak negative correlation between the price of a car and the number of days it is listed. In other words, there's a minimal tendency for lower-priced cars to have slightly longer listing durations and higher-priced cars to have slightly shorter listing durations.
+- The correlation coefficient is indicating a very weak negative correlation between the price of a car and the number of days it is listed. In other words, there's a minimal tendency for lower-priced cars to have slightly longer listing durations and higher-priced cars to have slightly shorter listing durations.
 """
 
 st.write(observation)
