@@ -426,8 +426,6 @@ observation = """
 - **SUV Dominance:** SUVs appear to be the most posted car type in several months, including April, December, March, May, and November.
 
 - **Truck Dominance:** Trucks dominate in months like August, February, July, and June.
-
-- **Sedan Peaks:** Sedans have a significant presence in months like January, October, and September.
 """
 
 st.write(observation)
