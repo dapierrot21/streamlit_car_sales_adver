@@ -214,9 +214,7 @@ st.write(f"P-value: {p_value}")
 # Add the observation to the Streamlit app
 observation = """
 **Price vs. Odometer**
-The correlation coefficient between price and odometer is approximately -0.42. A negative correlation suggests that as one variable (odometer) increases, the other variable (price) tends to decrease. This indicates that vehicles with higher mileage (odometer reading) generally have lower prices.
-
-The p-value being 0.0 indicates that the correlation is statistically significant, meaning it's unlikely to have occurred by random chance.
+The correlation coefficient of approximately -0.42 suggests a negative linear relationship between price and odometer. However, it's important to note that correlation does not imply causation, and other factors may influence this relationship. The statistically significant p-value (0.0) indicates that the correlation is unlikely to be a result of random chance. Further investigation, including visualizations and exploration of nonlinear models, can provide a more nuanced understanding of the dynamics between price and odometer.
 """
 
 st.write(observation)
@@ -285,7 +283,7 @@ st.write(correlation_matrix)
 # Add the observation to the Streamlit app
 observation = """
 **Top 20 Shortest Listed vs. Top 20 Longest Listed Conclusion**<br>
-- The correlation coefficient is indicating a very weak negative correlation between the price of a car and the number of days it is listed. In other words, there's a minimal tendency for lower-priced cars to have slightly longer listing durations and higher-priced cars to have slightly shorter listing durations.
+- The correlation coefficient of approximately -0.024 implies a very weak negative linear relationship between the price of a car and the number of days it is listed. However, it's crucial to exercise caution in attributing causation based solely on correlation. The weak correlation suggests a minimal tendency for lower-priced cars to have slightly longer listing durations and higher-priced cars to have slightly shorter listing durations. For a more comprehensive understanding, additional analyses, such as visualizations and exploration of alternative models, could be considered.
 """
 
 st.write(observation)
