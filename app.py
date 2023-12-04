@@ -160,7 +160,7 @@ st.header("Price vs. Odometer Relationship")
 alt.data_transformers.enable("default", max_rows=None)
 
 # Checkbox to select car types
-selected_car_types = st.multiselect(
+selected_car_types = st.checkbox(
     "Select Car Types",
     car_sales_df["type"].unique(),
     default=car_sales_df["type"].unique(),
