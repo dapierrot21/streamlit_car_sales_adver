@@ -67,6 +67,13 @@ current_year = datetime.datetime.now().year
 car_sales_df["car_age"] = current_year - car_sales_df["model_year"]
 
 
+# Introduction
+st.title("Exploratory Data Analysis of Car Sales Data")
+st.write(
+    "This notebook explores the dataset of car sales to derive insights into various aspects such as car age, price distribution, and the relationship between price and odometer readings."
+)
+
+
 # Car Age by type
 
 average_car_age_by_type = car_sales_df.groupby("type")["car_age"].mean().reset_index()
@@ -427,3 +434,10 @@ observation = """
 """
 
 st.write(observation)
+
+
+# Overall Conclusion
+st.title("Conclusion")
+st.write(
+    "In conclusion, the exploratory data analysis provides valuable insights into the car sales dataset. The analysis covered various aspects, including the distribution of car age by type, price distribution by car type, the relationship between price and odometer readings, and the duration of car listings. These insights can be useful for both sellers and buyers in understanding market trends and making informed decisions."
+)
