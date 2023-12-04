@@ -159,15 +159,24 @@ st.header("Price vs. Odometer Relationship")
 # Enable Altair data transformer
 alt.data_transformers.enable("default", max_rows=None)
 
-# Checkbox to select car types
+# Checkbox to select individual car types
 selected_car_types = st.checkbox(
     "Select Car Types",
     car_sales_df["type"].unique(),
-    key="checkbox_car_type",
+    default=car_sales_df["type"].unique(),
 )
 
-# Filter data based on selected car types
-filtered_data = car_sales_df[car_sales_df["type"].isin(selected_car_types)]
+# If any car type is selected, filter data based on the selected car types
+if selected_car_types:
+    selected_car_types = st.multiselect(
+        "Select Car Types",
+        car_sales_df["type"].unique(),
+        default=car_sales_df["type"].unique(),
+    )
+    filtered_data = car_sales_df[car_sales_df["type"].isin(selected_car_types)]
+else:
+    # If no car type is selected, show all data
+    filtered_data = car_sales_df
 
 # Price vs. Odometer Relationship
 scatterplot = (
