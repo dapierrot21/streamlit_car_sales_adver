@@ -10,11 +10,13 @@ The project utilizes the Streamlit framework in Python to create an interactive 
 
 ## Features
 
-- Distribution of Car Age
+- Distribution of Car Age by Car Type
 - Distribution of Car Prices
 - Price vs. Odometer Relationship
 - Scatter Plot of Odometer Values by Car Type
 - Type vs. Days Listed Relationship
+- Top 20 Shortest Listed vs. Top 20 Longest Listed
+- The Average Car Posted Each Month
 
 ## Libraries Used
 
