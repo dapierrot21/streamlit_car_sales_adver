@@ -310,7 +310,7 @@ st.plotly_chart(fig)
 
 # Add the observation to the Streamlit app
 observation = """
-**Conclusion**
+**Observation**
 - **SUV:** The average odometer reading is relatively high, indicating that SUVs may have covered a significant distance on average.
 
 - **Bus:** Buses also have a high average odometer reading, suggesting that they might be used for longer trips or have been on the road for an extended period.
@@ -364,7 +364,7 @@ st.plotly_chart(fig)
 
 # Add the observation to the Streamlit app
 observation = """
-**Conclusion**
+**Observation**
 - Understanding the average days listed for each car type can be useful for sellers and buyers alike. Sellers can adjust their expectations based on the typical duration, while buyers may gauge the availability and demand for specific car types in the market.
     - **SUV, Pickup, Truck:** SUVs, pickups, and trucks have the highest number of days listed. This may suggest that these types of vehicles, often used for various purposes, take longer to find buyers.
 
