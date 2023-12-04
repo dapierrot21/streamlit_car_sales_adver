@@ -156,18 +156,23 @@ st.plotly_chart(fig)
 
 st.header("Price vs. Odometer Relationship")
 
-# Enable Altair data transformer
-alt.data_transformers.enable("default", max_rows=None)
-
 # Checkbox to select car types
-selected_car_types = st.checkbox(
-    "Select Car Types",
-    car_sales_df["type"].unique(),
-    key="checkbox_car_type",
+selected_car_types_checkbox = st.checkbox(
+    "Select Car Types", value=True, key="checkbox_car_type"
 )
 
 # Filter data based on selected car types
-filtered_data = car_sales_df[car_sales_df["type"].all(selected_car_types)]
+if selected_car_types_checkbox:
+    selected_car_types = st.multiselect(
+        "Select Car Types",
+        car_sales_df["type"].unique(),
+        default=car_sales_df["type"].unique(),
+    )
+    # Filter data based on selected car types
+    filtered_data = car_sales_df[car_sales_df["type"].isin(selected_car_types)]
+else:
+    # Use all data if the checkbox is not selected
+    filtered_data = car_sales_df
 
 # Price vs. Odometer Relationship
 scatterplot = (
