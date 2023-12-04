@@ -22,28 +22,9 @@ else:
     print("No duplicates found.")
 
 
-# Fill missing values using groupby with a custom function
-def fill_missing_median(group):
-    """
-    Fill missing values in a pandas DataFrame group with the median of non-null values.
-
-    Parameters:
-    - group (pandas.DataFrame): A pandas DataFrame group.
-
-    Returns:
-    - pandas.DataFrame: A DataFrame with missing values filled using the median of non-null values.
-    """
-    non_null_values = group.dropna()
-    if non_null_values.empty:
-        return group
-    else:
-        median_value = non_null_values.median()
-        return group.fillna(median_value)
-
-
 car_sales_df["cylinders"] = car_sales_df.groupby(["model", "model_year"])[
     "cylinders"
-].transform(fill_missing_median)
+].transform("median")
 
 
 # Convert data types
