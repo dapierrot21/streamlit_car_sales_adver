@@ -163,7 +163,7 @@ alt.data_transformers.enable("default", max_rows=None)
 selected_car_types = st.checkbox(
     "Select Car Types",
     car_sales_df["type"].unique(),
-    default=car_sales_df["type"].unique(),
+    key="checkbox_car_type",
 )
 
 # If any car type is selected, filter data based on the selected car types
