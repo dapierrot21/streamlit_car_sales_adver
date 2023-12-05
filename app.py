@@ -51,7 +51,7 @@ car_sales_df["car_age"] = current_year - car_sales_df["model_year"]
 # Introduction
 st.title("Exploratory Data Analysis of Car Sales Data")
 st.write(
-    "This notebook explores the dataset of car sales to derive insights into various aspects such as car age, price distribution, and the relationship between price and odometer readings."
+    "Welcome to this exploration of the Car Sales dataset, a collection of information shedding light on various aspects of vehicle listings. The dataset encompasses crucial details such as price, odometer readings, and car types. In this analysis, I aim to uncover patterns, correlations, and insights that could offer valuable perspectives to both buyers and sellers in the dynamic car market. This analytical journey involves employing diverse methods, including correlation analysis and visualization techniques. By doing so, I seek to unravel the relationships between key variables and unveil intriguing trends within the dataset."
 )
 
 
